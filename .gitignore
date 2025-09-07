@@ -1,0 +1,40 @@
+# Dependências do Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Arquivos de build e output
+/dist
+/build
+/coverage
+
+# Arquivos de log
+logs/
+*.log
+*.log.*
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos do editor
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos de cache
+.cache/
+*.cache
+
+# Outros
+temp/
+tmp/
