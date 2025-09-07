@@ -123,25 +123,18 @@ axios.post(url, body)
 
 ## 📊 Arquitetura do Sistema
 
-A aplicação segue uma arquitetura modular e organizada, conforme ilustrado no diagrama abaixo:
-
-```mermaid
-graph TD
-    A[mock-requests.js<br>(Cliente)] -->|1. Envia requisição POST| B[Express Router<br>(API)]
-    B -->|2. Recebe requisição| C[services/distributionService.js<br>(Lógica de Negócio)]
-    B -->|3. Chama IA| D[Google Gemini API]
-    C -->|4. Manipula dados| E[utils/data.js<br>(Dados em Memória)]
-    E -->|5. Exporta atendentes| C
-    E -->|6. Exporta filaDeEspera| C
-    A -->|7. Usa utilitários| F[utils/random.js<br>(Aleatoriedade)]
-```
-
-### Componentes
+A aplicação segue uma arquitetura modular e organizada. Os componentes principais incluem:
 
 - **mock-requests.js**: Simula requisições de clientes com assuntos aleatórios.
 - **utils/random.js**: Fornece funções para gerar dados aleatórios, como intervalos de tempo.
 - **utils/data.js**: Armazena dados em memória (`atendentes` e `filaDeEspera`).
 - **services/distributionService.js**: Contém a lógica de negócio para classificação e distribuição de solicitações.
+
+O fluxo de interação ocorre da seguinte forma:
+1. O cliente (`mock-requests.js`) envia uma requisição POST.
+2. O roteador Express recebe a requisição e a encaminha para a lógica de negócio.
+3. A IA do Google Gemini é chamada para classificar o assunto.
+4. A lógica de negócio (`services/distributionService.js`) manipula os dados em `utils/data.js`.
 
 ---
 
@@ -156,7 +149,7 @@ Para tornar a API ainda mais robusta e preparada para produção, as seguintes m
      - Refatorações seguras em projetos complexos.
      - Melhor integração com IDEs e ferramentas de desenvolvimento.
 
-### 2. **Integração com Apache Kafka <img src="https://skillicons.dev/icons?i=kafka" />
+### 2. **Integração com Apache Kafka ** <img src="https://skillicons.dev/icons?i=kafka" alt="Kafka" /> 
    - **Objetivo**: Implementar um sistema de filas assíncrono e escalável.
    - **Benefícios**:
      - Processamento distribuído para grandes volumes de solicitações.
@@ -171,7 +164,7 @@ Para tornar a API ainda mais robusta e preparada para produção, as seguintes m
 
 ### 4. **Autenticação e Autorização**
    - **Objetivo**: Adicionar camadas de segurança com JWT ou OAuth2.
-   - **Benefits**:
+   - **Benefícios**:
      - Controle de acesso a endpoints sensíveis.
      - Proteção contra uso não autorizado.
 
